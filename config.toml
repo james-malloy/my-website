@@ -1,10 +1,10 @@
-baseURL = "/"
+baseURL = "https://www.jamesmalloy.net/"
 theme = "hugo-apero"
 languageCode = "en"
 title = "Personal website of James Malloy"
 author = "James Malloy"
 copyright = "" # set to override the auto generated copyright using org info and now year
-googleAnalytics = ""
+googleAnalytics = "UA-217355970-1"
 disqusShortname = ""
 metaDataFormat = "yaml"
 footnoteReturnLinkContents = "&#8617;" # ↩
