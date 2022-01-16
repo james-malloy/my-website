@@ -11,7 +11,15 @@ categories:
 - evergreen
 ---
 
-{{< here >}}
+## Testing
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(palmerpenguins) %>% 
+  glimpse()
+```
+
 
 ## But first, panelsets with R code chunks
 
