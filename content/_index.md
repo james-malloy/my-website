@@ -1,7 +1,7 @@
 ---
 title: "James Malloy"
-subtitle: "Welcome to my site"
-description: "Come for the X, stay for for the Y."
+subtitle: "Welcome to my site....."
+description: "Come for the lessons, stay for for the laughs."
 date: 2019-02-18T12:27:33-06:00
 images:
   - img/pic-welcome.jpg
