@@ -4,7 +4,7 @@ subtitle: "How to add panelsets in R Markdown posts."
 excerpt: "Add tabbed sections with code and results."
 date: 2021-05-24
 author: "Alison Hill"
-draft: true
+draft: false
 # layout options: single, single-sidebar
 layout: single
 categories:
@@ -16,8 +16,17 @@ categories:
 ```{r}
 library(tidyverse)
 library(dplyr)
-library(palmerpenguins) %>% 
-  glimpse()
+library(shiny)
+library(palmerpenguins)
+library(plotly)
+
+data(cars)
+
+ggplotly(
+ggplot(cars, aes(x = speed, y = dist, color = speed)) +
+  geom_point()
+)
+
 ```
 
 
