@@ -1,7 +1,7 @@
 ---
 title: "James Malloy"
-subtitle: "Welcome to my site....."
-description: "Come for the lessons, stay for for the laughs."
+subtitle: "Expect to learn. Prepare to laugh."
+description: "Welcome to my site, an all-purpose blog where I chronicle about my life and the various goings-on. Expect to see content related to learning and things that make me laugh."  
 date: 2019-02-18T12:27:33-06:00
 images:
   - img/pic-welcome.jpg

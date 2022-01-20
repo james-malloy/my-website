@@ -7,4 +7,4 @@ headline: |
 ---
 
 <!-- this is a subheadline -->
-I'm a driven 30-something Black male from NC who moved to Atlanta to.... I've been tasked with bring good to a world that doesnt deserve it. :fr:
+Just a 30-something Black male from NC with a dogged determination. Follow me while I figure life out, do some good in this world, and try to enjoy life in the process.

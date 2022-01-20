@@ -49,6 +49,17 @@ plot(pressure)
 {{< /panel >}}
 {{< /panelset  >}}
 
+
+.panelset[
+.panel[.panel-name[R Code]
+```{r oplot, fig.show='hide'}
+# ... r code ...
+```
+]
+.panel[.panel-name[Plot]
+![](`r knitr::fig_chunk("oplot", ".png")`)
+]
+]
 ## I'm half machine. I'm a monster.
 
 It's a hug, Michael. I'm hugging you. I'm half machine. I'm a monster. There's only one man I've ever called a coward, and that's Brian Doyle Murray. No, what I'm calling you is a television actor. Bad news. Andy Griffith turned us down. He didn't like his trailer.
