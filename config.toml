@@ -31,9 +31,9 @@ enableEmoji = true
   orgName = ""
   orgLocal = "Atlanta"
   description = ""
-  favicon = "/img/favicon.ico"
-  logo = "/img/blogophonic-mark-dark.png"
-  mainSections = ["blog", "project", "talk", "learn with me"]
+  favicon = "/img/my-logo.png"
+  logo = "/img/my-logo.png"
+  mainSections = ["blog", "project", "learn with me"]
   navallcaps = true
   # show/hide social icons in site header & footer
   # configure social icons and links below in [[params.social]]
@@ -97,35 +97,30 @@ enableEmoji = true
 
 [menu]
   [[menu.header]]
-    name = "About"
-    title = "About Blogophonic"
-    url = "/about/"
-    weight = 1
+#    name = "About"
+#    title = "About Blogophonic"
+#    url = "/about/"
+#    weight = 1
+#  [[menu.header]]
+#    name = "Blog"
+#    title = "Blog"
+#    url = "/blog/"
+#    weight = 2
   [[menu.header]]
-    name = "Blog"
-    title = "Blog"
-    url = "/blog/"
-    weight = 2
+#    name = "Projects"
+#    title = "Project Portfolio"
+#    url = "/project/"
+#    weight = 3
+#  [[menu.header]]
+#    name = "Talks"
+#    title = "Talks"
+#    url = "/talk/"
+#    weight = 4
   [[menu.header]]
-    name = "Projects"
-    title = "Project Portfolio"
-    url = "/project/"
-    weight = 3
-  [[menu.header]]
-    name = "Talks"
-    title = "Talks"
-    url = "/talk/"
-    weight = 4
-  [[menu.header]]
-    name = "Learn with me"
-    title = "Learn with me"
-    url = "/learnwithme/"
-    weight = 5
-  [[menu.header]]
-    name = "Coursework"
-    title = "Coursework"
-    url = "/coursework/"
-    weight = 6
+#    name = "Learn with me"
+#    title = "Learn with me"
+#    url = "/learnwithme/"
+#    weight = 5
     
   # Configure footer  
   [[menu.footer]]
