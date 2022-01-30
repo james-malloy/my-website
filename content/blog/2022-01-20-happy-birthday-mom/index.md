@@ -4,7 +4,7 @@ subtitle: "How to add panelsets in plain markdown posts."
 excerpt: "Add tabbed sections to your posts."
 date: 2022-01-20
 author: "James Malloy"
-draft: false
+draft: true
 # layout options: single, single-sidebar
 layout: single
 categories:
