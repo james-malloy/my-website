@@ -1,6 +1,6 @@
 ---
 title: Learn with me
-description: "This part of my site showcases things I'm teaching myself. Nothing here is directly related to classwork, but there'll be some overlap. "
+description: "Watch me as I share what I'm learning, mistakes and all."
 author: "James Malloy"
 show_post_thumbnail: true
 show_author_byline: true

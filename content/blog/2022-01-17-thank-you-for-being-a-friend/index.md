@@ -4,7 +4,7 @@ subtitle: "Homage to Betty White."
 excerpt: "\"You can lead a herring to water, but you have to walk really fast or he'll die.\""
 date: 2022-01-17
 author: "James Malloy"
-draft: false
+draft: true
 # layout options: single, single-sidebar
 layout: single
 categories:
