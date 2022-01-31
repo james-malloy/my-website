@@ -7,4 +7,4 @@ headline: |
 ---
 
 <!-- this is a subheadline -->
-Just a 30-something Black male from NC with a dogged determination. Follow me while I figure life out, do some good in this world, and try to enjoy life in the process.
+Just a 30-something Black male from NC with a dogged determination. Follow me while I figure life out, attempt to do some good in this world, and try to enjoy life in the process.
