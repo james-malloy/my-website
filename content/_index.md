@@ -1,9 +1,7 @@
 ---
 title: "James Malloy"
-subtitle: "Coming Soon!"
-# "Expect to learn. Prepare to laugh."
-description: "Expect to learn! Prepare to laugh!"
-# "Welcome to my site, an all-purpose blog where I chronicle about my life and the various goings-on. Expect to see content related to learning and things that make me laugh."  
+subtitle: "Hello, World."
+description: "Welcome to my all-purpose blog & personal website where I chronicle about my life and the various goings-on. Expect to see content made for learning and laughing."
 date: 2019-02-18T12:27:33-06:00
 images:
   - img/pic-welcome.jpg

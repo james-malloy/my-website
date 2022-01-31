@@ -15,9 +15,6 @@ sidebar:
   title: A Peak Under the Hood
   description: |
     Welcome to my thoughts. Opinions are my own.
-    
-    Check out the _index.md file in the /blog folder 
-    to edit this content. 
   author: "James Malloy"
   text_link_label: Subscribe via RSS
   text_link_url: /index.xml

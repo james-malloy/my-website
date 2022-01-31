@@ -120,7 +120,7 @@ enableEmoji = true
     name = "Learn with me"
     title = "Learn with me"
     url = "/learnwithme/"
-    weight = 5
+    weight = 4
     
 # Configure footer  
   [[menu.footer]]
