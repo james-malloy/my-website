@@ -2,6 +2,7 @@
 title: Learn with me
 description: "This part of my site showcases things I'm teaching myself. Nothing here is directly related to classwork, but there'll be some overlap. "
 author: "James Malloy"
+draft: true
 show_post_thumbnail: true
 show_author_byline: true
 show_post_date: true
