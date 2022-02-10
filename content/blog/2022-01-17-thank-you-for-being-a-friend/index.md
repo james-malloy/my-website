@@ -1,77 +1,66 @@
 ---
 title: "Thank you for being a friend"
 subtitle: "Homage to Betty White."
-excerpt: "\"You can lead a herring to water, but you have to walk really fast or he'll die.\""
-date: 2022-01-17
+excerpt: "\"There are so many ways to say farewell. Let's see, there's Auf Wiedersehen, arrivederci, adiós, hasta luego.\""
+date: 2022-02-07
 author: "James Malloy"
 draft: true
 # layout options: single, single-sidebar
 layout: single
 categories:
-- Theme features
+# - Theme features
 ---
 
-<img src="/img/betty-white-landscape.jpg" alt="Betty White">
+### Betty White
 
-### Test
+<center><img src="/img/betty-white-landscape.jpg" width="550" height="300" alt="Betty White"></center>
 
-I read somewhere the other day a question that asked:
+<!--I came across a [tweet](https://bit.ly/3ruZ8aC) the other day that said "Imagine living 99 years and an entire country collectively agreeing it wasn't long enough."--->
 
-<blockquote>
-
-Question: "How do you know you've left an indelible mark on society?" 
-
-Answer: "When the world collectively agrees that your 100-year lifespan wasn't 
-    <sp>long enough." 
- 
-</blockquote>
-
-I don't know about y'all, but I could definitely do another 100 years of having Betty White around.
- 
-<audio controls src="/media/vertubenflugen.mp4"> Your browser does not support the <code> audio </code> element.
-<figcaption>You see, I'm not one to blow my own vertubenflugen, but I was on the Betty White Bandwagon way back in the 90s before it was trendy. I'd be in my mom's room watching Golden Girls when I was just a little boy. </figcaption> 
-
-</audio>
+This one hurt bad y'all. After all, I've been riding the Betty-White-Bandwagon since the early 90s when I was just a wee lad. Each week, I'd tune in with my mom to watch our favorite show, *The Golden Girls*. The jokes from the show would give me a sidesplitting laughter that I swear I can still feel to this day 🤣! I was so impatient to see Betty turn the big 💯, but I guess sometimes 99 and 1/2 *will* have to do 😞.
 
 
+### Rose Nylund
 
-<center>
+<center><img src="https://c.tenor.com/CwkZgWMJNdkAAAAd/yay-dancing.gif" width="550" height="300" alt="Yay Dancing GIF - Yay Dancing Golden Girls GIFs" style="max-width: 833px;"></center>
 
-<img src="https://i.gifer.com/9QMD.gif" alt="Goldengirlsufc estelle getty GIF - Find on GIFER" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1" style="width: 300px; height: 200px; margin: 16.4px 0px;">
-
-</center>
-
-
-And while I'd say my own humor rivals moreso that of Dorothy's, I'd like to think that my values are in the likeness of Rose. I appreciate Betty White for bringing a 
-
-"Yes, I may be slower than you, but maybe I'm worth waiting for." 
+When asked "Who's your favorite Golden Girl?," I often hear people answer "Sophia." Don't get me wrong...Estelle Getty as Sophia was ingenious. But I have always been enamored by Betty White as Rose Nylund 😍. Rose was, to me, a beautifully constructed character, sincere, naïve, and unpretentious, with a healthy dose of "take no shit." Perhaps the reason I love Rose so much is because I see myself as possessing similar qualities. (Though when God made me I think he got the dosages mixed up and gave me too much "take no shit" and not enough of the others. The ingredients are still mostly there though I think).
 
 
+### The Best of Times
 
-I was on the Betty White bandwagon before it was trendy. (And I say that realizing I get absolutely 0 cool points it). But that's how serious I mean it. I grew up watching Golden Girls when I was just a little boy. I'd be in my mom's room watching tv soaking up every joke and every crack. And while my own humor mirrored Dorothy's more than anyone's, Rose always stood out as my favorite. I appreciate Betty White for bringing a 
+While she was with us, Betty gave us some timeless laughs. Anyone who enjoys *The Golden Girls* as much as much as I do will absolutely love this video with some of her funniest moments on the show. 
 
-"Yes, I may be slower than you, but maybe I'm worth waiting for." 
+<center><iframe width="550" height="300" src="https://www.youtube.com/embed/cHEcaz-L7LA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
 
-And just like clock work, I waited up at night to catch Rose and the girls. Years have passed and habits have changed but this is one Jamesism I'll probably carry on to the bitter end.
+<!--And while my own humr and personality more closely mirror Dorothy's, I like to think that my values and character are more akin to Rose. While my own humor and personality more closely mirrors that of Dorothy, I like tho think that my character and values more closely mirror Rose.-->
 
-I'm so appreciate of Betty White for her portrayal in the Golden Girls and her career in general. Like most people, I've had my fair share of reasons not to laught. I'm grateful to Betty White for giving me so many opportunities to laugh when life gave me so many reasons to do anything but. 
+### When 💩 Got Real
 
-So this post is dedicated to you, Betty. Your life and your art have inspired the masses. And you've inspired me to do the same. 
+When *The Golden Girls* premiered in the 80s, it was incredibly progressive for its time, tackling topics that left audience members asking "Did they just go there?" In the clip below, Betty shows us her range with a more serious portrayal as Rose confronts the possibility of having contracted HIV.
 
-<iframe width="691" height="389" src="https://www.youtube.com/embed/opEigpvhJRE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<center><iframe width="500" height="300" src="https://www.youtube.com/embed/hhnsbV49LfY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+
+### Why it's Personal
+
+Watching Betty White on *The Golden Girls* is a tradition I've carried with me from childhood to adulthood. Like Rose, I, too, have faced my fair share of challenges that made me want to trade in sincerity for cynicism and optimism for despair. In moments like those, I often find myself retreating back to my old habit of watching my favorite 'Golden Gal'. If laughter actually is the best medicine, then Betty White was something like my therapist and pharmacist wrapped in one. 
+
+<center><img src="https://c.tenor.com/O_C0pq5TqCAAAAAd/sock-puppets-hand-puppets.gif" width="550" height="300" alt="Sock Puppets Hand Puppets GIF - Sock Puppets Hand Puppets Golden Girls GIFs" style="max-width: 833px;"></center>
+
+### Saying Goodbye
+
+All that being said, this post is dedicated to you, Betty. Your life and your artistry have touched the masses. And your willingness to share your gift with the world inspires me to do the same. 
+
+As Rose Nylund once said, "There are so many ways to say farewell. Auf Wiedersehen, arrivederci, adiós, hasta luego." With so many options, I think I'll just settle with "Thank you for being a friend."
+
+With Love,
+
+James
 
 ![Betty White](/img/bettywhite.jpg)
 
+### An Encore for Betty
 
+I can't end this post without an encore for Betty! The clip below is from the episode "Sophia's Choice" when Rose and Sophia rescue a friend from a retirement home. This episode has become one of my favorites since Betty's passing. If you watch it, you'll understand why. 
 
-
-
-
-
-
-
-
-
-
-
-
+<center><iframe width="640" height="360" src="https://www.youtube.com/embed/U_pNSxPy7Vo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
