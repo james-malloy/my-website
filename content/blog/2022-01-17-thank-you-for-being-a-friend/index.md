@@ -4,7 +4,7 @@ subtitle: "Homage to Betty White."
 excerpt: "\"There are so many ways to say farewell. Let's see, there's Auf Wiedersehen, arrivederci, adiós, hasta luego.\""
 date: 2022-02-07
 author: "James Malloy"
-draft: true
+draft: false
 # layout options: single, single-sidebar
 layout: single
 categories:
