@@ -1,0 +1,67 @@
+---
+title: Google Apps Script, Google Sheets, & HTML, Oh My!
+author: James Malloy
+draft: true
+date: '2022-03-12'
+slug: []
+categories: []
+tags: []
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE,
+                      warning = FALSE)
+```
+
+```{r}
+library(googlesheets4)
+```
+
+
+Finally, my first "Learn With Me" Post! And this one's a doozy! 
+
+For my latest undertaking, I'm trying to solve the problem of disseminating Scholarship information to my students. When it comes  scholarships, I think we live somewhere between there being an overwhelming amount of search engines to find them, yet not enough money to actually pay for them after you actually do find one. Furthermore, information for large scholarships can be easier to find than information for local scholarships. 
+
+To alleviate this problem, my idea is to send a weekly email with local and national scholarships that my students can apply to. The scholarship data I have is hosted on a Google Sheet like [this one](https://docs.google.com/spreadsheets/d/1nooIWAD9K3JBMgEMC_sx3XK2YWNOx9awOlU-8UiEVmc/edit#gid=0) and my students emails are housed on [the second tab](https://docs.google.com/spreadsheets/d/1nooIWAD9K3JBMgEMC_sx3XK2YWNOx9awOlU-8UiEVmc/edit#gid=1719413448) in the same sheet (these emails are fake btw). 
+
+![video 1](/static/media/scholarship-spreadsheet-video-1.mp4)
+
+<div class="GAQXDSOBGI GAQXDSOBAR" title="scholarship-spreadsheet-video-1.mp4">scholarship-spreadsheet-video-1.mp4</div>
+
+To send the email I'm using the following function:
+```{js}
+function sendScholarshipEmail() {
+GmailApp.sendEmail(recipient, subject, body, cc, bcc)
+}
+```
+
+The "recipient" of my email is simply myself so my script now looks like this
+
+```{js}
+function sendScholarshipEmail() {
+
+let recipient = "staff_email_1@example.email" // pretend this is my actual email
+
+GmailApp.sendEmail(recipient, subject, body, cc, bcc)
+}
+```
+
+I want the subject of the email to read like this  "Weekly Scholarship Email: March 12, 2022". But so far, I've only been able to get the date to show up in "MM-dd-YYYY" format.
+
+```{js}
+function sendScholarshipEmail() {
+
+//RECIPIENT
+let recipient = "staff_email_1@example.email" // pretend this is my actual email
+
+//SUBJECT
+let date = Utilities.formatDate(new Date(), "EST", "MM-dd-YYYY");
+let subject = "Weekly Scholarship List: " + date;
+
+GmailApp.sendEmail(recipient, subject, body, cc, bcc)
+}
+```
+
+The email body was the challenging part. For the email body, I want to embed the table of scholarships on my Google Sheet directly in the email I send out Thanks to Shine Vision on Youtube, I was able to get the following script to work.
