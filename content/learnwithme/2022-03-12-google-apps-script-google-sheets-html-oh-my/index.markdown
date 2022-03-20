@@ -219,3 +219,34 @@ Thanks in advance to anyone able to help. Also, I don't assume that this is the 
 Lastly, as always, if anyone is just curious to know more about me, this project, or my data journey, feel free to reach out.
 
 ~ James
+
+
+::::: {.panelset}
+
+::: {.panel}
+
+[Tab A]{.panel-name}
+
+Sit mi magnis conubia posuere...
+
+:::
+
+::: {.panel}
+
+[Tab B]{.panel-name}
+
+### Sub heading one
+
+Ipsum fermentum volutpat potenti...
+
+:::
+
+::: {.panel}
+
+[Tab C]{.panel-name}
+
+Ipsum nascetur duis senectus praesent...
+
+:::
+
+
