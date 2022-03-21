@@ -1,6 +1,7 @@
 ---
 title: Visualizing Interrater Reliability
 author: James Malloy
+draft: true
 date: '2022-03-05'
 slug: []
 categories: []
@@ -63,8 +64,19 @@ df_round_1 <- # assign object to "df_round_1"
   select(rater_1_round_1, rater_2_round_1) %>% # select just the scores
   data.frame() # to use the cohen.kappa function you MUST feed it a data frame object
 
-cohen.kappa(df_round_1) %>% 
-  broom::tidy() %>% 
+ck <- cohen.kappa(df_round_1) 
+
+ggplot(tidy(ck), aes(estimate, type)) +
+  geom_point() +
+  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high)) +
+  labs(title = "Cohen's Kappa Round 1")
+```
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/round-1-1.png" width="672" />
+
+``` r
+ck %>% 
+  tidy() %>% 
   kable(caption = "Cohen's Kappa Round 1", digits = 2)
 ```
 
@@ -256,31 +268,3 @@ ggplot(df_summary, aes(x = question, y = agreement_round_1, color = agreement_ro
 ```
 
 <img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" />
-
-``` r
-#library(tidyverse/broom)
-
-# feel free to ignore the following line—it allows {broom} to supply 
-# examples without requiring the model-supplying package to be installed.
-if (requireNamespace("psych", quietly = TRUE)) {
-
-# generate example data
-rater1 <- 1:9
-rater2 <- c(1, 3, 1, 6, 1, 5, 5, 6, 7)
-
-# fit model
-ck <- cohen.kappa(cbind(rater1, rater2))
-
-# summarize model fit with tidiers + visualization
-tidy(ck)
-
-# graph the confidence intervals
-library(ggplot2)
-
-ggplot(tidy(ck), aes(estimate, type)) +
-  geom_point() +
-  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high))
-}  
-```
-
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" />
