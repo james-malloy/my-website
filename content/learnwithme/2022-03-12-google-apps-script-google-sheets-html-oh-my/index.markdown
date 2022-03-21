@@ -15,7 +15,7 @@ I'm trying automate an email using Google Apps Script & Google Sheets. I was abl
 
 ## The Task
 
-I want to automate a weekly email that is sent to my students. The content of the email is an html table with scholarship information for my students to apply to. Because the primary data source at my organization is Google, I want the automation to be accessible (physically and conceptually) to anyone after I leave. That's why I've decided to go with Google Apps Script & Sheets. Unfortunately, I've never worked with Apps Script, JavaScript, or HTML before this, so I'm out of my element. Try not to judge my code too bad (I'm sure its unsightly). Your feedback is welcome. Here's a play-by-play of my work thus far:
+I want to automate a weekly email that is sent to students. The content of the email is an html table with scholarship information for them to apply to. Because the primary data source at tbe organization is Google, I want the automation to be accessible (physically and conceptually) to anyone who might work on this in the future. That's why I've decided to go with Google Apps Script & Sheets. Unfortunately, I've never worked with Apps Script, JavaScript, or HTML before this, so I'm out of my element. Try not to judge my code too bad (I'm sure its unsightly), but your feedback is welcome. Here's a play-by-play of my work thus far:
 
 ## My Attempt
 
@@ -219,34 +219,3 @@ Thanks in advance to anyone able to help. Also, I don't assume that this is the 
 Lastly, as always, if anyone is just curious to know more about me, this project, or my data journey, feel free to reach out.
 
 ~ James
-
-
-::::: {.panelset}
-
-::: {.panel}
-
-[Tab A]{.panel-name}
-
-Sit mi magnis conubia posuere...
-
-:::
-
-::: {.panel}
-
-[Tab B]{.panel-name}
-
-### Sub heading one
-
-Ipsum fermentum volutpat potenti...
-
-:::
-
-::: {.panel}
-
-[Tab C]{.panel-name}
-
-Ipsum nascetur duis senectus praesent...
-
-:::
-
-
