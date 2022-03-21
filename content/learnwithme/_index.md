@@ -1,6 +1,6 @@
 ---
 title: Learn with me
-description: "Watch me as I share what I'm learning, mistakes and all."
+description: "These post are about me asking for help and making mistakes along the way. To help you help me, I'll try to make these posts more straight to the point and save the "fluff" for my other sections."
 author: "James Malloy"
 show_post_thumbnail: true
 show_author_byline: true
