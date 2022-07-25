@@ -19,6 +19,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ```{r load-libraries-data, echo=FALSE}
 library(tidyverse) # pipes, wrangling, etc
+library(ggforce)
 library(psych) # cohen.kappa()
 library(irr) # agree
 library(knitr) # nice data frames
@@ -27,102 +28,199 @@ library(broom)
 library(kableExtra)
 library(stargazer)
 
-df_irr <- read_csv("data/irr.csv",
+theme_set(theme_minimal())
+set.seed(1234)
+
+df_irr <- read_csv("C:/Users/james/OneDrive/Desktop/my-website/content/project/2022-03-05-visualizing-interrater-reliability/irr.csv",
                    col_select = c(id, cr_no, target_sentence, response, training, overall_AD,
-                                  overall_AD_2, overall_JM, overall_JM_2)) %>% 
-  filter(training == 2,
-         id != "SERP_F19C_C2_94") %>% 
-  mutate(rater_1_round_1 = overall_AD,
-         rater_1_round_2 = overall_AD_2,
-         rater_2_round_1 = overall_JM,
-         rater_2_round_2 = overall_JM_2,
-         agree_round_1 = case_when(rater_1_round_1 == rater_2_round_1 ~ 1,
-                                   rater_1_round_1 != rater_2_round_1 ~ 0),
-         agree_round_2 = case_when(rater_1_round_2 == rater_2_round_2 ~ 1,
-                                   rater_1_round_2 != rater_2_round_2 ~ 0)) %>% 
-  mutate(question = case_when(cr_no == "viz_cr_1" ~ "Question 1",
-                              cr_no == "viz_cr_2" ~ "Question 2",
-                              cr_no == "viz_cr_3" ~ "Question 3",
-                              cr_no == "viz_cr_4" ~ "Question 4",
-                              cr_no == "viz_cr_5" ~ "Question 5",
-                              cr_no == "viz_cr_6" ~ "Question 6",
-                              cr_no == "viz_cr_7" ~ "Question 7",
-                              cr_no == "viz_cr_8" ~ "Question 8",
-                              cr_no == "viz_cr_9" ~ "Question 9"), .before = target_sentence) %>% 
+                                 overall_AD_2, overall_JM, overall_JM_2)) %>% 
+  filter(id != "SERP_F19C_C2_94") %>% 
+  drop_na(c(overall_AD, overall_AD_2, overall_JM, overall_JM_2)) %>% 
+  # mutate(training = as.factor(training)) %>% 
+  mutate(coresearcher_round_1 = overall_AD,
+         coresearcher_round_2 = overall_AD_2,
+         james_round_1 = overall_JM,
+         james_round_2 = overall_JM_2,
+         agree_round_1 = case_when(coresearcher_round_1 == james_round_1 ~ 1,
+                                   coresearcher_round_1 != james_round_1 ~ 0),
+         agree_round_2 = case_when(coresearcher_round_2 == james_round_2 ~ 1,
+                                   coresearcher_round_2 != james_round_2 ~ 0)) %>% 
+  mutate(response = case_when(cr_no == "viz_cr_1" ~ "Response 1",
+                              cr_no == "viz_cr_2" ~ "Response 2",
+                              cr_no == "viz_cr_3" ~ "Response 3",
+                              cr_no == "viz_cr_4" ~ "Response 4",
+                              cr_no == "viz_cr_5" ~ "Response 5",
+                              cr_no == "viz_cr_6" ~ "Response 6",
+                              cr_no == "viz_cr_7" ~ "Response 7",
+                              cr_no == "viz_cr_8" ~ "Response 8",
+                              cr_no == "viz_cr_9" ~ "Response 9"), .before = target_sentence) %>% 
   group_by(id) %>% 
   mutate(ID = cur_group_id(), .before = id) %>% 
   ungroup() %>% 
   select(-c(overall_AD, overall_AD_2, overall_JM, overall_JM_2, cr_no, id, target_sentence, response))
-
-
 ```
-
 
 In the realm of research, the term **reliability** refers to how consistently a method measures something. If the same result can be consistently achieved by using the same methods under the same circumstances, the measurement is considered reliable.
 
-I'm currently working on a research study where participants have to construct written responses. Those written responses are then evaluated by my co-researcher and me, and then given a quality score of 3 (great), 2 (good), 1 (fair), or 0 (poor). 
-
-The graph below is a final summary our work and progress toward reaching reliability.
+I'm currently working on a research study where participants have to construct written responses. Those written responses are then evaluated by my co-researcher and me and given a quality score between 0 and 3. Thus, our task is to ensure our results are reliable (i.e. that we are more on the same page with scores than not.)
 
 
-# Training 1 Round 1
+```{r}
+# tib <- tibble(
+#   mutate(partici)
+#   participant_id = mutate(cur_group_id()
+# )
+```
 
-The simplest way to think about reliability is % agreement, which is simply the percentage of times my co-researcher and I had perfect agreement. Percent agreement is a very straightforward concept. Unfortunately, it can also be challenging to reach because what one rater scores a 0, the other might score a 1, what one rater might score a 1, the other a 2, and so on and so on.
+
+# Round 1
+
+## Percent Agreement
+
+Perhaps the simplest way to think about reliability is percent agreement. As its name suggests, percent agreement is simply the percentage of times my co-researcher and I gave someone the exact same score.
+
+time permitting add example table here
+```{r}
+tibble(
+  c(~participant_id, ~participant_response, ~rater_1_score, ~rater_2_score)
+)
+```
+
+Unfortunately, high percent agreement can also be difficult to reach because what one rater might score a 0, the other might score a 1, what one rater gives a 1, the other might rate a 2, and so on and so on.
 
 This proved to be true for my co-researcher and I as well. I calculate below our percent agreement for our 1st training session.
 
 ```{r percent-agreement}
+set.seed(1234)
 
-df_irr %>% summarize(mean(agree_round_1))# calculate percent agreement
-gauge(value = 40 , min = 0, max = 100,symbol = "%")
+df_irr %>% 
+  filter(training==1) %>% 
+  summarize(mean(agree_round_1, na.rm =T)) # calculate percent agreement
 
+df_irr %>% 
+  filter(training == 1) %>%
+  select(coresearcher_round_1,james_round_1) %>% 
+  pivot_longer(cols = c(coresearcher_round_1,james_round_1), 
+               names_to = "researcher", 
+               values_to = "score") %>% 
+  ggplot(aes(researcher, score, color = researcher)) +
+  geom_jitter(width = .1) +
+  geom_smooth(method = "gam") +
+  scale_x_discrete(labels = c("Coresearcher", "James")) +
+  theme(legend.position = "none")
 ```
 
-40%...YIKES! NOT GOOD! With percent agreement, you want to be in the 70-80% range, certainly no lower than 60%. What was the source of our disagreement? I explained part of it earlier that percent agreement means "perfect agreement." In other words, you get no "bonus points" even if your scores are close to one another. Percent agreement could then be aptly changed to "perfect agreement."
+40%...YIKES! NOT GOOD! With percent agreement, you want to be in the 70-80% range, certainly no lower than 60%. What was the source of our disagreement? I explained part of it earlier that percent agreement means "perfect agreement." In other words, you get no slack even if your scores are close to one another. In essence, percent agreement could then be aptly changed to "perfect agreement."
 
-To consider the reality of the distribution of possible scores between scorers, researchers enlist another statistical tool call Cohen's Kappa. What is Cohen's Kappa?
+## Cohen's Kappa
+
+To consider the reality of the distribution of possible scores between scorers, researchers enlist another statistical tool call Cohen's kappa.
 
 Cohen’s kappa measures the agreement between two raters who each classify N items into C mutually exclusive categories.¹
 A simple way to think this is that Cohen’s Kappa is a quantitative measure of reliability for two raters that are rating the same thing, corrected for how often that the raters may agree by chance.
 
 https://towardsdatascience.com/cohens-kappa-9786ceceab58
 
-Below I calculate cohen's kappa for the same set of scores. 
+I calculate cohen's kappa for the same set of scores. Unfortunately, Cohen's kappa doesn't prove to be any better than the percent agreement and only leaves more questions. 
 
-```{r  round-1}
+{{< panelset class="greetings" >}}
+{{< panel name="CK Table :wave:" >}}
+
+```{r cohens-kappa-1, echo=FALSE, eval=TRUE}
+
+# to use the irr:cohen.kappa function, you need to feed it a matrix that has
+# only 2 variables (i.e. the 2 sets of scores)
+
+ck_round_1 <- 
+  df_irr %>%
+  select(coresearcher_round_1, james_round_1) %>% # select just the scores
+  # to use cohen.kappa function below, you must feed it a "dataframe" obj.
+  data.frame() %>% 
+  cohen.kappa()
+
+ck_round_1 %>% 
+  tidy() %>% 
+  kbl(caption = "Cohen's Kappa Round 1", digits = 2) %>% 
+  kable_styling()
+```
+
+{{< /panel >}}
+{{< panel name="Data Visualization :dash:" >}}
+
+
+```{r}
+ggplot(tidy(ck_round_1), aes(estimate, type)) +
+  geom_point() +
+  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high)) +
+  labs(y = "Type", title = "Cohen's Kappa Round 1")
+```
+
+{{< /panel >}}
+{{< panel name="R Code :dash:" >}}
+
+```{r cohens-kappa-2, echo=TRUE, eval=FALSE}
 
 # to use the irr:cohen.kappa function, you must feed it a matrix with *just* the two scorers
 
 df_round_1 <- # assign object to "df_round_1"
   df_irr %>%  # call original data frame
-  select(rater_1_round_1, rater_2_round_1) %>% # select just the scores
+  select(coresearcher_round_1, james_round_1) %>% # select just the scores
   data.frame() # to use the cohen.kappa function you MUST feed it a data frame object
 
 ck <- cohen.kappa(df_round_1) 
-
-ggplot(tidy(ck), aes(estimate, type)) +
-  geom_point() +
-  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high)) +
-  labs(title = "Cohen's Kappa Round 1")
 
 ck %>% 
   tidy() %>% 
   kable(caption = "Cohen's Kappa Round 1", digits = 2)
 ```
 
-Unfortunately, Cohen's kappa doesn't prove to be any better than the percent agreement and only leaves more questions. To get to the bottom of this, I decide to visualize our scores with a confusion matrix. T
+
+{{< /panel >}}
+{{< /panelset >}}
+
+## Confusion Matrix
+
+To get to the bottom of inter-rater disagreements, it's helpful to visualize them with a confusion matrix like the one below. The numbers that fall along the red arrow indicate  the times when my co-researcher and I had perfect agreement. In a perfect world (i.e. in world where raters agree 100% of the time), this arrow would be the only place you'd see numbers. 
+
+However, each time we disagreed falls *off* this arrow. This visualization revealed two problematic areas for us:
+
+* When I rate participants a 0 and my co-researcher rates them a 1
+
+* When I rate participants a 1 and my co-researcher rates them a 2
+
+In other words, I'm a tough grader 😅. To be fair though, this project that I'm on isn't something I had previous experience in. I asked to join to try something new.
+
+Any number that does not fall on this red line indicates the times where we did not agree. Lastly, the numbers indicate frequency such that higher numbers are depicted by darker colors. 
+
+
+Any 
+
+In a perfect world, raters would be
 
 ```{r confusion-matrix}
 
-cm_round_1 <- table(df_round_1) %>% as.data.frame()
-# cm_round_1
-
-ggplot(cm_round_1, aes(rater_1_round_1, rater_2_round_1, fill = Freq)) +
+df_irr %>% 
+  select(coresearcher_round_1, james_round_1) %>% 
+  table() %>% 
+  as.data.frame() %>% 
+  ggplot(aes(coresearcher_round_1, james_round_1, fill = Freq)) +
   geom_tile() +
   geom_text(aes(label = Freq)) +
+  geom_ellipse(aes(x0 = 2.5, y0 = 2.5, a = 3, b = .35, angle = .75),
+               color = "yellow", size = 1,
+               inherit.aes = F) +
+  geom_ellipse(aes(x0 = 2, y0 = 1, a = .5, b = .25, angle = 0),
+               color = "red", size = .5,
+               inherit.aes = F) +
+  geom_ellipse(aes(x0 = 3, y0 = 2, a = .5, b = .25, angle = 0), 
+               color = "red", size = .5,
+               inherit.aes = F) +
   scale_fill_gradient(low="white", high="#009194") +
   theme_light() +
-  labs(x = "Rater 1", y = "Rater 2")
+  labs(x = "My Co-researcher", 
+       y = "James (Me)", 
+       title = "Inter-rater reliability matrix",
+       caption = "Problem areas circled in red")
 ```
 
 The confusion matrix reveals two problem areas: 
@@ -140,7 +238,7 @@ By the looks of it, I'm a tough grader. To be fair, this study I'm working on is
 # Create matrix
 df_round_2 <-
   df_irr %>% 
-  select(rater_1_round_2, rater_2_round_2) %>% 
+  select(coresearcher_round_2, james_round_2) %>% 
   data.frame()
 
 irr::agree(df_round_2) # an alternative way to calculate % agreement
@@ -148,7 +246,7 @@ irr::agree(df_round_2) # an alternative way to calculate % agreement
 cm_round_2 <- table(df_round_2) %>% as.data.frame()
 # cm_round_2
 
-ggplot(cm_round_2, aes(rater_1_round_2, rater_2_round_2, fill = Freq)) +
+ggplot(cm_round_2, aes(coresearcher_round_2, james_round_2, fill = Freq)) +
   geom_tile() +
   geom_text(aes(label = Freq)) +
   scale_fill_gradient(low="white", high="#009194") +
@@ -161,25 +259,42 @@ cohen.kappa(df_round_2) %>%
 ```
 
 
-
 ```{r}
-df_summary <- df_irr %>% 
-  group_by(question) %>% 
+df_summary_by_question <- df_irr %>% 
+  group_by(question, training) %>% 
   summarize(
     n = n(),
     agreement_round_1 = sum(agree_round_1 == 1)/n,
     agreement_round_2 = sum(agree_round_2 == 1)/n
     )
 
-
-ggplot(df_summary, aes(x = question, y = agreement_round_1, color = agreement_round_1)) +
-  geom_point(size = 5) +
-  geom_point(color = "black", pch = 21, size = 5) +
-  scale_color_gradient(low="white", high="#009194") +
-  scale_y_continuous() +
+ggplot(df_summary_by_question, aes(x = question, y = agreement_round_1, color = as.factor(training))) +
+  geom_point() +
+  #scale_color_gradient(low="white", high="#009194") +
   ylim(c(0,1)) +
   labs(y = "Percent Agreement",
        x = "Question") +
-  theme_bw()
-
+  theme(axis.text.x = element_text(angle = 90, vjust = .5, hjust=1))
 ```
+
+Long story short, we're eventually able to get our reliability to what you see below.
+
+```{r}
+df_irr %>% 
+  filter(training == 4) %>% 
+  select(coresearcher_round_2, james_round_2) %>% 
+  table() %>% 
+  as.data.frame() %>% 
+  ggplot(aes(coresearcher_round_2, james_round_2, fill = Freq)) +
+  geom_tile() +
+  geom_text(aes(label = Freq)) +
+  geom_ellipse(aes(x0 = 2.5, y0 = 2.5, a = 3, b = .5, angle = .75),
+               color = "yellow", size = 1,
+               inherit.aes = F) +
+  scale_fill_gradient(low="white", high="#009194") +
+  theme_light() +
+  labs(x = "Co-researcher's scores", 
+       y = "James' scores", 
+       title = "Inter-rater reliability matrix")
+```
+
