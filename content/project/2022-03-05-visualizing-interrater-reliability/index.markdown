@@ -16,20 +16,17 @@ editor_options:
 
 
 
-
 In the realm of research, the term **reliability** refers to how consistently a method measures something. If the same result can be consistently achieved by using the same methods under the same circumstances, the measurement is considered reliable.
 
-I'm currently working on a research study where participants have to construct written responses. Those written responses are then evaluated by my co-researcher and me, and then given a quality score of: 
+I'm currently working on a research study where participants have to construct written responses. Those written responses are then evaluated by my co-researcher and me and given a quality score between 0 and 3. Thus, our task is to ensure our results are reliable (i.e. that we are more on the same page with scores than not.)
 
-- 3 (great)
 
-- 2 (good)
-
-- 1 (fair)
-
-- 0 (poor)
-
-The graph below is a final summary our work and progress toward reaching reliability.
+```r
+# tib <- tibble(
+#   mutate(partici)
+#   participant_id = mutate(cur_group_id()
+# )
+```
 
 # Round 1
 
@@ -38,6 +35,7 @@ The graph below is a final summary our work and progress toward reaching reliabi
 Perhaps the simplest way to think about reliability is percent agreement. As its name suggests, percent agreement is simply the percentage of times my co-researcher and I gave someone the exact same score.
 
 time permitting add example table here
+
 
 ```r
 tibble(
@@ -97,12 +95,11 @@ df_irr %>%
 
 To consider the reality of the distribution of possible scores between scorers, researchers enlist another statistical tool call Cohen's kappa.
 
-Cohen’s kappa measures the agreement between two raters who each classify N items into C mutually exclusive categories.¹
-A simple way to think this is that Cohen’s Kappa is a quantitative measure of reliability for two raters that are rating the same thing, corrected for how often that the raters may agree by chance.
+Cohen's kappa measures the agreement between two raters who each classify N items into C mutually exclusive categories.¹ A simple way to think this is that Cohen's Kappa is a quantitative measure of reliability for two raters that are rating the same thing, corrected for how often that the raters may agree by chance.
 
-https://towardsdatascience.com/cohens-kappa-9786ceceab58
+<https://towardsdatascience.com/cohens-kappa-9786ceceab58>
 
-I calculate cohen's kappa for the same set of scores. Unfortunately, Cohen's kappa doesn't prove to be any better than the percent agreement and only leaves more questions. 
+I calculate cohen's kappa for the same set of scores. Unfortunately, Cohen's kappa doesn't prove to be any better than the percent agreement and only leaves more questions.
 
 {{< panelset class="greetings" >}}
 {{< panel name="CK Table :wave:" >}}
@@ -145,7 +142,7 @@ ggplot(tidy(ck_round_1), aes(estimate, type)) +
   labs(y = "Type", title = "Cohen's Kappa Round 1")
 ```
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 {{< /panel >}}
 {{< panel name="R Code :dash:" >}}
@@ -172,20 +169,19 @@ ck %>%
 
 ## Confusion Matrix
 
-To get to the bottom of inter-rater disagreements, it's helpful to visualize them with a confusion matrix like the one below. The numbers that fall along the red arrow indicate  the times when my co-researcher and I had perfect agreement. In a perfect world (i.e. in world where raters agree 100% of the time), this arrow would be the only place you'd see numbers. 
+To get to the bottom of inter-rater disagreements, it's helpful to visualize them with a confusion matrix like the one below. The numbers that fall along the red arrow indicate the times when my co-researcher and I had perfect agreement. In a perfect world (i.e. in world where raters agree 100% of the time), this arrow would be the only place you'd see numbers.
 
 However, each time we disagreed falls *off* this arrow. This visualization revealed two problematic areas for us:
 
-* When I rate participants a 0 and my co-researcher rates them a 1
+-   When I rate participants a 0 and my co-researcher rates them a 1
 
-* When I rate participants a 1 and my co-researcher rates them a 2
+-   When I rate participants a 1 and my co-researcher rates them a 2
 
 In other words, I'm a tough grader 😅. To be fair though, this project that I'm on isn't something I had previous experience in. I asked to join to try something new.
 
-Any number that does not fall on this red line indicates the times where we did not agree. Lastly, the numbers indicate frequency such that higher numbers are depicted by darker colors. 
+Any number that does not fall on this red line indicates the times where we did not agree. Lastly, the numbers indicate frequency such that higher numbers are depicted by darker colors.
 
-
-Any 
+Any
 
 In a perfect world, raters would be
 
@@ -217,11 +213,11 @@ df_irr %>%
 
 <img src="{{< blogdown/postref >}}index_files/figure-html/confusion-matrix-1.png" width="672" />
 
-The confusion matrix reveals two problem areas: 
- 
-* when I (Rater 2) am scoring responses as 0 that my co-researcher is scoring as 1 and 
+The confusion matrix reveals two problem areas:
 
-* when I (Rater 2) am scoring things as a 1 that my co-researcher is scoring as a 2.
+-   when I (Rater 2) am scoring responses as 0 that my co-researcher is scoring as 1 and
+
+-   when I (Rater 2) am scoring things as a 1 that my co-researcher is scoring as a 2.
 
 By the looks of it, I'm a tough grader. To be fair, this study I'm working on is not my primary domain. I asked to be part of it to have some research experience under my belt. After pinpointing our problem areas, my co-researcher and I confer to discuss our different points of view. Eventually, we're able to get our percent agreement and reliability to what you see below.
 
@@ -293,17 +289,16 @@ cohen.kappa(df_round_2) %>%
 </table>
 
 
-
 ```r
 df_summary_by_question <- df_irr %>% 
-  group_by(question, training) %>% 
+  group_by(response, training) %>% 
   summarize(
     n = n(),
     agreement_round_1 = sum(agree_round_1 == 1)/n,
     agreement_round_2 = sum(agree_round_2 == 1)/n
     )
 
-ggplot(df_summary_by_question, aes(x = question, y = agreement_round_1, color = as.factor(training))) +
+ggplot(df_summary_by_question, aes(x = response, y = agreement_round_1, color = as.factor(training))) +
   geom_point() +
   #scale_color_gradient(low="white", high="#009194") +
   ylim(c(0,1)) +
@@ -312,7 +307,7 @@ ggplot(df_summary_by_question, aes(x = question, y = agreement_round_1, color = 
   theme(axis.text.x = element_text(angle = 90, vjust = .5, hjust=1))
 ```
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
 Long story short, we're eventually able to get our reliability to what you see below.
 
@@ -336,5 +331,4 @@ df_irr %>%
        title = "Inter-rater reliability matrix")
 ```
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" />
-
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="672" />
