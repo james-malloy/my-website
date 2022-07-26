@@ -1,7 +1,7 @@
 ---
 title: Visualizing Interrater Reliability
 author: James Malloy
-draft: true
+draft: false
 date: '2022-03-05'
 slug: []
 categories: []
